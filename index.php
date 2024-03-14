@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Controller/LivraisonController.php';
+require_once 'routes.php';
 
-$controller = new LivraisonController();
-$controller->Livraison();
+$router = new Router();
+$router->routeRequest();
 
 ?>

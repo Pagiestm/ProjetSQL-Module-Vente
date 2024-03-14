@@ -11,14 +11,14 @@ class LivraisonController
         $this->model = new Bdd();
     }
 
-    public function index()
+    public function Livraison()
     {
         if (!empty($_POST['Adresse']) && !empty($_POST['Date_Livraison']) && !empty($_POST['Numero_Livraison'])) {
             $AdresseLivraison = $_POST['Adresse'];
             $Date_Livraison = $_POST['Date_Livraison'];
             $Numero_Livraison = $_POST['Numero_Livraison'];
 
-            $this->model->addTest($AdresseLivraison, $Date_Livraison, $Numero_Livraison);
+            $this->model->addBonLivraison($AdresseLivraison, $Date_Livraison, $Numero_Livraison);
         }
 
         if (isset($_POST['update_id']) && isset($_POST['update_test'])) {
@@ -29,10 +29,10 @@ class LivraisonController
 
         if (isset($_POST['supprimerLivraison'])) {
             $id_Livraison = $_POST['supprimerLivraison'];
-            $this->model->deleteTest($id_Livraison);
+            $this->model->deleteBonLivraison($id_Livraison);
         }
 
-        $tests = $this->model->getTest();
+        $tests = $this->model->getBonLivraison();
         require_once 'View/Livraison.php';
     }
 }

@@ -17,7 +17,7 @@ class Bdd
         }
     }
 
-    public function getTest()
+    public function getBonLivraison()
     {
         $sql = "CALL afficherBon_de_Livraisons()";
         $query =  $this->bdd->prepare($sql);
@@ -25,7 +25,7 @@ class Bdd
         return $query->fetchAll();
     }
 
-    public function addTest($Adresse, $Date_Livraison, $Numero_Livraison)
+    public function addBonLivraison($Adresse, $Date_Livraison, $Numero_Livraison)
     {
         $sql = "CALL creerBon_de_Livraisons(:Adresse, :Date_Livraison, :Numero_Livraison)";
         $query = $this->bdd->prepare($sql);
@@ -41,7 +41,7 @@ class Bdd
         return $query->fetchAll();
     }
 
-    public function deleteTest($id_Livraison)
+    public function deleteBonLivraison($id_Livraison)
     {
         $sql = "CALL supprimerBon_de_Livraisons(:id_Livraison)";
 

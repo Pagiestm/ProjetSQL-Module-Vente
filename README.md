@@ -2,6 +2,8 @@
 
 ```sql
 
+CREATE DATABASE IF NOT EXISTS vente;
+
 CREATE TABLE IF NOT EXISTS vente.Bon_de_Livraisons(
    id_Livraison INT PRIMARY KEY AUTO_INCREMENT,
    Adresse VARCHAR(50) NOT NULL,
@@ -78,6 +80,25 @@ DELIMITER //
    BEGIN 
       DELETE FROM vente.Bon_de_Livraisons WHERE id_Livraison = l_id_Livraison;
    END //
+DELIMITER ;
+
+
+
+
+DELIMITER //
+CREATE TRIGGER vente_superieur_3000
+AFTER INSERT ON vente.commandes
+FOR EACH ROW
+BEGIN
+    IF NEW.Montant_Total > 3000 THEN
+        INSERT INTO vente.alertes (`Message`, `Date_Alerte`, `fk_Commande`) VALUES
+        (
+            CONCAT('La commande ', NEW.id_Commande, ' est supérieure à 3000€.'), 
+            NOW(), 
+            NEW.id_Commande
+        );
+    END IF;
+END //
 DELIMITER ;
 
 ```

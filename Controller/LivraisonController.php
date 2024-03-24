@@ -13,7 +13,7 @@ class LivraisonController
 
     public function Livraison()
     {
-        if (!empty($_POST['Adresse']) && !empty($_POST['Date_Livraison']) && !empty($_POST['Numero_Livraison'])) {
+        if (!empty($_POST['Adresse']) && !empty($_POST['Date_Livraison']) && !empty($_POST['Numero_Livraison']) && !isset($_POST['id_Livraison'])) {
             $AdresseLivraison = $_POST['Adresse'];
             $Date_Livraison = $_POST['Date_Livraison'];
             $Numero_Livraison = $_POST['Numero_Livraison'];
@@ -21,10 +21,13 @@ class LivraisonController
             $this->model->addBonLivraison($AdresseLivraison, $Date_Livraison, $Numero_Livraison);
         }
 
-        if (isset($_POST['update_id']) && isset($_POST['update_test'])) {
-            $id = $_POST['update_id'];
-            $test = $_POST['update_test'];
-            $this->model->updateTest($id, $test);
+        if (isset($_POST['id_Livraison']) && isset($_POST['Adresse']) && isset($_POST['Date_Livraison']) && isset($_POST['Numero_Livraison'])) {
+            $id_Livraison = $_POST['id_Livraison'];
+            $Adresse = $_POST['Adresse'];
+            $Date_Livraison = $_POST['Date_Livraison'];
+            $Numero_Livraison = $_POST['Numero_Livraison'];
+
+            $this->model->modifierBonDeLivraisons($id_Livraison, $Adresse, $Date_Livraison, $Numero_Livraison);
         }
 
         if (isset($_POST['supprimerLivraison'])) {

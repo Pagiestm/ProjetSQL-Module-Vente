@@ -30,13 +30,13 @@
                         </form>
                     </td>
                     <td>
-                        <!--
                         <form method="post" action="">
-                            <input type="hidden" name="update_id" value="<?php echo $test['id']; ?>">
-                            <input type="text" name="update_test" value="<?php echo $test['test']; ?>">
+                            <input type="hidden" name="id_Livraison" value="<?php echo $test['id_Livraison']; ?>">
+                            <input type="text" name="Adresse" value="<?php echo $test['Adresse']; ?>">
+                            <input type="text" name="Date_Livraison" value="<?php echo $test['Date_Livraison']; ?>">
+                            <input type="text" name="Numero_Livraison" value="<?php echo $test['Numero_Livraison']; ?>">
                             <input type="submit" name="update" value="Modifier">
                         </form>
-                        -->
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -33,13 +33,19 @@ class Bdd
         return $query->fetchAll();
     }
 
-    public function updateTest($id, $test)
+    public function modifierBonDeLivraisons($id_Livraison, $Adresse, $Date_Livraison, $Numero_Livraison)
     {
-        $sql = "CALL update_test(:id, :test)";
+        $sql = "CALL modifierBon_de_Livraisons(:id_Livraison, :Adresse, :Date_Livraison, :Numero_Livraison)";
         $query = $this->bdd->prepare($sql);
-        $query->execute(array(":test" => $test, ":id" => $id));
+        $query->execute(array(
+            ":id_Livraison" => $id_Livraison,
+            ":Adresse" => $Adresse,
+            ":Date_Livraison" => $Date_Livraison,
+            ":Numero_Livraison" => $Numero_Livraison
+        ));
         return $query->fetchAll();
     }
+
 
     public function deleteBonLivraison($id_Livraison)
     {

@@ -6,7 +6,7 @@ class Router {
     public function routeRequest() {
         $uri = $_SERVER['REQUEST_URI'];
 
-        if ($uri == '/livraison') {
+        if ($uri == '/') {
             $controller = new LivraisonController();
             $controller->Livraison();
         }

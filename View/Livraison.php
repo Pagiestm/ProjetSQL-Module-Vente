@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <h1>Tableau des bons de livraison</h1>
     <table>
         <thead>
             <tr>
@@ -43,6 +44,7 @@
         </tbody>
     </table>
 
+    <h2>Ajouter un bon de livraison</h2>
     <form method="post" action="">
         <label for="Adresse">Adresse :</label>
         <input type="text" name="Adresse" required>

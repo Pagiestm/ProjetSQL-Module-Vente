@@ -1,29 +1,29 @@
-# Module vente
+# Vérification du stock d’un produit choisi pour une vente avant de valider la commande
 
-## Le Dictionnaire de données 
+```sql
 
-## MCD (Modèle Conceptuel de Données)
+DELIMITER //
+CREATE PROCEDURE PasserCommande (
+   IN nomProduit VARCHAR(25),
+   IN quantiteCommande INT
+)
+BEGIN
+   DECLARE stockDisponible INT;
 
-## MLD (Modèle Logique de Données)
+   SELECT quantite_dispo INTO stockDisponible
+   FROM stock s
+   INNER JOIN produit p ON p.id = s.fk_produit
+   WHERE p.nom = nomProduit;
 
-## MPD (Modèle Physique de Données)
+   IF quantiteCommande <= stockDisponible THEN
+      INSERT INTO commandes (Date_Commande, Montant_Total, Quantite_Total, Statut)
+      VALUES (NOW(), (SELECT prix_unitaire FROM produit WHERE nom = nomProduit) * quantiteCommande, quantiteCommande, 'En attente');
 
-## Création de la base de données
+      SELECT 'Commande passée avec succès.' AS message;
+    ELSE
+      SELECT 'La quantité commandée est supérieure au stock disponible.' AS message;
+    END IF;
+END //
+DELIMITER ;
 
-[Création de la base de données](./Documents/create_database.md)
-
-## Création des tables
-
-[Création des tables](./Documents/create_tables.md)
-
-## Les procédures stockées
-
-[Procédures Stockées pour le CRUD](./Documents/procedure_stockee.md)
-
-## Trigger
-
-[Trigger](./Documents/trigger.md)
-
-## Vérification du stock en collaboration avec un autre module
-
-[Vérification du stock avant la commande](./Documents/verif_stock.md)
+```

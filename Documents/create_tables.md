@@ -2,8 +2,6 @@
 
 ```sql
 
-CREATE DATABASE IF NOT EXISTS vente;
-
 CREATE TABLE IF NOT EXISTS vente.Bon_de_Livraisons(
    id_Livraison INT PRIMARY KEY AUTO_INCREMENT,
    Adresse VARCHAR(50) NOT NULL,

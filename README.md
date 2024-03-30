@@ -6,7 +6,6 @@
 
 ## MCD (Modèle Conceptuel de Données)
 
-![MCD](./Documents/MCD.png)
 
 ## MLD (Modèle Logique de Données)
 

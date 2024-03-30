@@ -19,3 +19,11 @@ END //
 DELIMITER ;
 
 ```
+
+# Tester le Trigger avec la vérification du stock avec un produit dont le prix est supérieur à 3000
+
+```sql
+
+CALL PasserCommande(2, 3);
+
+```

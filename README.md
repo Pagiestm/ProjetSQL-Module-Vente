@@ -2,7 +2,11 @@
 
 ## Le Dictionnaire de données 
 
+![Dictionnaire de données](./Documents/Dictionnaire-de-données.png)
+
 ## MCD (Modèle Conceptuel de Données)
+
+![MCD](./Documents/MCD.png)
 
 ## MLD (Modèle Logique de Données)
 
